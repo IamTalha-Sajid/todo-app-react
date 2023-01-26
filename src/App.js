@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './todo-list.svg';
 import './App.css';
+import { FaTrash } from 'react-icons/fa';
 
 function App() {
 
@@ -21,6 +22,14 @@ function App() {
     setTodoList([]);
   };
 
+  const deleteItem = (id) => {
+    const updatedList = todoList.filter((item, ind) =>{
+      return ind !== id
+    })
+
+    setTodoList(updatedList);
+  }
+
   return (
     <div className="main-div">
       <div className="center-div">
@@ -40,11 +49,11 @@ function App() {
         <div className="list-div">
           <div className="todo-list">
             {
-              todoList.map((item) => {
+              todoList.map((item, ind) => {
                 return (
-                  <div className="todo-item">
-                    <input type="checkbox" className="checkbox"></input>
+                  <div className="todo-item" key={ind}>
                     <p className="todo-text">{item}</p>
+                    <FaTrash className="icon" onClick={() => deleteItem(ind)}/>
                   </div>
                 )
               })
