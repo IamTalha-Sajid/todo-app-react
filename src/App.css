@@ -49,6 +49,7 @@
 .button:hover {
   background-color: #2d5354;
   color: #fff;
+  cursor: grab;
 }
 
 .todo-list {
@@ -59,20 +60,27 @@
 }
 
 .todo-item {
-  width: 300px;
+  width: 320px;
   height: 40px;
   border-radius: 5px;
   display: flex;
   align-items: center;
   flex-direction: row;
+  background-color: rgba(39,136,142,255);
+  margin: 5px
+}
+
+.todo-item:hover{
+  background-color: #2d5354;
 }
 
 .todo-text {
-  color: #2d5354;
+  color: #fff;
   font-size: 20px;
   font-weight: 600;
   justify-content: center;
   align-items: center;
+  margin-left: 10px;
 }
 
 .checkbox {
@@ -90,6 +98,7 @@
 }
 
 .icon {
-  padding-left: 100px;
   color: #e96e71;
+  align-items: right;
+  cursor: grab;
 }
