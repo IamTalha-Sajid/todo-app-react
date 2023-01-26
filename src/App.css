@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+.main-div {
+  background-color: #ffffff;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center-div {
+  padding-top: 100px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+.caption-div {
+  color: rgba(39,136,142,255);
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-field {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: solid rgba(39,136,142,255);
+  padding-left: 10px;
+  margin-top: 20px;
+}
+
+.button {
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  border: solid #0f253d;
+  background-color: #fff;
+  color: #0f253d;
+  font-weight: 600;
+  margin: 9px;
+  padding: 20px;
+}
+
+.button:hover {
+  background-color: #0f253d;
+  color: #fff;
+}
+
+.todo-list {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  /* padding-right: 180px; */
+}
+
+.todo-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.todo-text {
+  color: #0f253d;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+}
+
+.list-div {
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  margin: 10px;
 }
