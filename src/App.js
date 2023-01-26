@@ -43,8 +43,8 @@ function App() {
           <input className="input-field" type="text" placeholder="Add an item..." value={todoText} onChange={(e) => setTodoText(e.target.value)}></input>
         </div>
         <div className="button-div">
-          <button className="button" onClick={addList}>Add</button>
-          <button className="button" onClick={clearList}>Clear</button>
+          <button className="button" onClick={addList}>Add Item</button>
+          <button className="button" onClick={clearList}>Clear all Items</button>
         </div>
         <div className="list-div">
           <div className="todo-list">
@@ -53,7 +53,7 @@ function App() {
                 return (
                   <div className="todo-item" key={ind}>
                     <p className="todo-text">{item}</p>
-                    <FaTrash className="icon" onClick={() => deleteItem(ind)}/>
+                    <FaTrash className="icon" onClick={() => deleteItem(ind)} alt="Delete Item"/>
                   </div>
                 )
               })
