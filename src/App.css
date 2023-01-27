@@ -67,7 +67,8 @@
   align-items: center;
   flex-direction: row;
   background-color: rgba(39,136,142,255);
-  margin: 5px
+  margin: 5px;
+  justify-content: space-between;
 }
 
 .todo-item:hover{
@@ -97,8 +98,16 @@
   margin: 10px;
 }
 
-.icon {
+.delete-icon {
   color: #e96e71;
   align-items: right;
   cursor: grab;
+  margin: 5px;
+}
+
+.update-icon {
+  color: #abced2;
+  align-items: right;
+  cursor: grab;
+  margin: 5px;
 }
