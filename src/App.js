@@ -5,14 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import './App.css';
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 
-// toast.configure()
 
 function App() {
 
   const [todoText, setTodoText] = React.useState("");
+  const [id, setId] = React.useState("");
   const [todoList, setTodoList] = React.useState([]);
   const [updateStatus, setUpdateStatus] = React.useState(false);
-  console.log(todoText);
+  const [itemId, setItemId] = React.useState(0)
 
   useEffect(() => {
   }, [todoText]);
@@ -22,7 +22,8 @@ function App() {
       toast.error("Input field cannot be empty")
     }
     else {
-      setTodoList([...todoList, todoText]);
+      setTodoList([...todoList, {id: itemId, item: todoText}]);
+      setItemId(itemId + 1);
       setTodoText("");
       toast.success("Added to list successfully")
     }
@@ -34,37 +35,31 @@ function App() {
     }
     else {
       setTodoList([]);
+      setItemId(0)
       toast.info("Cleared list successfully")
     }
   };
 
   const deleteItem = (id) => {
-    const updatedList = todoList.filter((item, ind) => {
-      return ind !== id
-    })
-
+    const updatedList = todoList.filter(todoList => todoList.id !== id)
+    console.log(updatedList);
     setTodoList(updatedList);
     toast.info("Deleted item successfully")
   }
 
   const editMode = (id) => {
-    setTodoText(todoList[id]);
+    const editedItem = todoList.find(todoList => todoList.id === id)
+    setTodoText(editedItem.item);
     setUpdateStatus(true)
+    setId(id)
   }
 
   const updateItem = () => {
 
     let newArr = [...todoList];
-    let index;
-    console.log("todo text before loop", todoText)
-    for(let i=0; i< newArr.length ; i++){
-      if(todoText === newArr[i]){
-        index = i;
-      }
-    }
-
-    console.log(index);
-    newArr[index] = todoText;
+    let index=newArr.findIndex((x)=>x.id === id);
+    console.log("todo text before loop index", index)
+    newArr[index].item = todoText;
     setTodoList(newArr);
     console.log("new array", todoList)
     setTodoText("");
@@ -92,13 +87,13 @@ function App() {
         <div className="list-div">
           <div className="todo-list">
             {
-              todoList.map((item, ind) => {
+              todoList.map(({id, item}) => {
                 return (
-                  <div className="todo-item" key={ind}>
+                  <div className="todo-item" key={id}>
                     <p className="todo-text">{item}</p>
                     <div>
-                      <FaPencilAlt className="update-icon" onClick={() => editMode(ind)} alt="Update Item" />
-                      <FaTrash className="delete-icon" onClick={() => deleteItem(ind)} alt="Delete Item" />
+                      <FaPencilAlt className="update-icon" onClick={() => editMode(id)} alt="Update Item" />
+                      <FaTrash className="delete-icon" onClick={() => deleteItem(id)} alt="Delete Item" />
                     </div>
                   </div>
                 )
