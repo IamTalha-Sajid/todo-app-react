@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import logo from './todo-list.svg';
+import darkLogo from "./todo-list-dark.svg";
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import './AppDark.css';
+import './App.css';
 import { FaTrash, FaPencilAlt } from 'react-icons/fa';
 
 
@@ -19,8 +20,8 @@ function App() {
   useEffect(() => {
   }, [todoText, isDarkMode]);
 
-  const toggleDarkMode = (checked: boolean) => {
-    setDarkMode(checked);
+  const toggleDarkMode = () => {
+    setDarkMode(!isDarkMode);
   };
 
   const addList = () => {
@@ -74,32 +75,32 @@ function App() {
   }
 
   return (
-    <div className="main-div">
+    <div className={isDarkMode === true ? 'main-div' : 'main-div-dark'}>
       <div className="dark-mode">
-        <DarkModeSwitch style={{ marginBottom: '2rem', alignItems: 'right' , padding: '10px'}} checked={isDarkMode} onChange={toggleDarkMode} size={40}/>
+        <DarkModeSwitch style={{ marginBottom: '2rem', alignItems: 'right' , padding: '10px', margin: '20px'}} checked={isDarkMode} onChange={toggleDarkMode} size={40} sunColor ='#fff' moonColor='#2d5354'/>
       </div>
       <ToastContainer />
       <div className="center-div">
         <figure>
-          <img className="logo" src={logo} alt="Todo List"></img>
+          <img className="logo" src={isDarkMode === true ? logo : darkLogo} alt="Todo List"></img>
         </figure>
-        <div className="caption-div">
+        <div className={isDarkMode === false ? 'caption-div-dark' : 'caption-div'}>
           <h1>Todo List Application</h1>
         </div>
         <div className="input-div">
           <input className="input-field" type="text" placeholder="Add an item..." value={todoText} onChange={(e) => setTodoText(e.target.value)}></input>
         </div>
         <div className="button-div">
-          <button className="button" onClick={updateStatus === true ? () => updateItem() : () => addList()}>{updateStatus === true ? "Update Item" : "Add Item"}</button>
-          <button className="button" onClick={clearList}>Clear all Items</button>
+          <button className={isDarkMode === false ? 'button-dark' : 'button'} onClick={updateStatus === true ? () => updateItem() : () => addList()}>{updateStatus === true ? "Update Item" : "Add Item"}</button>
+          <button className={isDarkMode === false ? 'button-dark' : 'button'} onClick={clearList}>Clear all Items</button>
         </div>
         <div className="list-div">
           <div className="todo-list">
             {
               todoList.map(({ id, item }) => {
                 return (
-                  <div className="todo-item" key={id}>
-                    <p className="todo-text">{item}</p>
+                  <div className={isDarkMode === false ? 'todo-item-dark' : 'todo-item'} key={id}>
+                    <p className={isDarkMode === false ? 'todo-text-dark' : 'todo-text'}>{item}</p>
                     <div>
                       <FaPencilAlt className="update-icon" onClick={() => editMode(id)} alt="Update Item" />
                       <FaTrash className="delete-icon" onClick={() => deleteItem(id)} alt="Delete Item" />
