@@ -3,10 +3,16 @@
   height: 100vh;
 }
 
+.main-div-dark {
+  background-color: #2d5354;
+  height: 100vh;
+}
+
 .logo {
   width: 100px;
   height: 100px;
-  object-fit: cover;;
+  object-fit: cover;
+  margin-right: 20px;
 }
 
 .center-div {
@@ -19,6 +25,14 @@
 
 .caption-div {
   color: rgba(39,136,142,255);
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+}
+
+.caption-div-dark {
+  color: #abced2;
   font-size: 20px;
   font-weight: 600;
   justify-content: center;
@@ -49,6 +63,24 @@
 .button:hover {
   background-color: #2d5354;
   color: #fff;
+  cursor: grab;
+}
+
+.button-dark {
+  width: 150px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(39,136,142);
+  color: #fff;
+  font-weight: 600;
+  margin: 9px;
+  padding: 20px;
+}
+
+.button-dark:hover {
+  background-color: #fff;
+  color: #2d5354;
   cursor: grab;
 }
 
@@ -84,10 +116,33 @@
   margin-left: 10px;
 }
 
-.checkbox {
-  width: 20px;
-  height: 20px;
-  margin: 10px;
+.todo-item-dark {
+  width: 320px;
+  height: 40px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: rgba(39,136,142,255);
+  margin: 5px;
+  justify-content: space-between;
+}
+
+.todo-item-dark:hover{
+  background-color: #fff;
+}
+
+.todo-item-dark:hover .todo-text-dark{
+  color: #2d5354;
+}
+
+.todo-text-dark {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
 }
 
 .list-div {
