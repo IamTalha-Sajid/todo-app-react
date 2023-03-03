@@ -52,12 +52,11 @@
   width: 150px;
   height: 40px;
   border-radius: 10px;
-  border: solid #2d5354;
+  border: 2px solid #2d5354;
   background-color: #fff;
   color: #2d5354;
   font-weight: 600;
   margin: 9px;
-  padding: 20px;
 }
 
 .button:hover {
@@ -70,12 +69,11 @@
   width: 150px;
   height: 40px;
   border-radius: 10px;
-  border: none;
+  border: 1px solid #fff;
   background-color: rgb(39,136,142);
   color: #fff;
   font-weight: 600;
   margin: 9px;
-  padding: 20px;
 }
 
 .button-dark:hover {
@@ -170,4 +168,9 @@
 .dark-mode{
   display: flex;
   justify-content: end;
+  align-items: center;
+}
+
+.input-div{
+    display : contents;
 }
