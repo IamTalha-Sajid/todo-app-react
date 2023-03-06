@@ -1,4 +1,4 @@
-import React, {useEffect, useId} from 'react';
+import React, {useEffect} from 'react';
 import logo from './todo-list.svg';
 import darkLogo from "./todo-list-dark.svg";
 import {DarkModeSwitch} from 'react-toggle-dark-mode';
@@ -17,13 +17,21 @@ function Login() {
     const [password, setPassword] = React.useState("");
 
     useEffect(() => {
-    }, [isDarkMode]);
+        if(localStorage.getItem('currentUser') !== ""){
+            navigate('/Todo')
+        }
+    }, []);
 
     const toggleDarkMode = () => {
         setDarkMode(!isDarkMode);
     };
 
     const signUp = () => {
+        console.log("UserName", userName)
+        console.log("UserName", password)
+
+        if (userName !== "" && password !== ""){
+
         const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
         if (existingUsers.some(user => user.userName === userName)) {
             setUserName("");
@@ -31,13 +39,17 @@ function Login() {
             toast.error('Username already exists!');
             return;
         }
-        const todoList = []
-        const userHistory = []
-        const newUser = {userName, password, userHistory};
+
+        const newUser = {userName, password};
         localStorage.setItem('users', JSON.stringify([...existingUsers, newUser]));
         setUserName("");
         setPassword("");
         toast.success('Sign up successful!');
+
+        }
+        else {
+            toast.error("Email or Password cannot be empty")
+        }
     }
 
     const loginUser = () => {
@@ -70,8 +82,8 @@ function Login() {
                     <h1>Login and Signup</h1>
                 </div>
                 <div className="input-div">
-                    <input className="input-field" type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)} value={userName}></input>
-                    <input className="input-field" type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                    <input className="input-field" type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)} value={userName} required></input>
+                    <input className="input-field" type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)} value={password} required></input>
                 </div>
                 <div className="button-div">
                     <button className={isDarkMode === false ? 'button-dark' : 'button'} onClick={loginUser}>Login</button>
